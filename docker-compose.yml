@@ -1,0 +1,23 @@
+version: '2'
+services:
+
+  mysql:
+    image: jguillermo/docker-persist:mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_USER : root
+      MYSQL_DATABASE: dbproject
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/mysql/sql:/docker-entrypoint-initdb.d
+
+  solr:
+    image: jguillermo/docker-persist:mysql:solr
+    ports:
+      - 8983:8983
+    volumes:
+      - ./solr:/opt/solr/server/solr/mycores
+#      - ./app/export:/opt/solr/mydata
+
+    # sudo chmod o+w -R solr

@@ -1,0 +1,12 @@
+version: '2'
+services:
+
+  mysql:
+      image: jguillermo/docker-persist:mysql
+      build:
+        context: ./docker/mysql/
+
+  solr:
+      image: jguillermo/docker-persist:solr
+      build:
+        context: ./docker/solr/
